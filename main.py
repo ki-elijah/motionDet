@@ -27,3 +27,32 @@ while True:
         motion = 10000
         (x, y, w, h) = cv2.boundingRect(contour)
         cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 0), 3)
+    
+    motionList.append(motion)
+    motionList = motionList[-2:]
+    
+    if motionList[-1] = 1 and motionList[-2] == 0:
+        time.append(datetime.now())
+    
+    if motionList[-1] == 0 and motionList[-2] == 1:
+        time.append(datetime.now())
+        
+    cv2.imshow("Gray Frame", gray)
+    cv2.imshow("Difference Frame", diffFrame)
+    cv2.imshow("Threshold Frame", threshFrame)
+    cv2.imshow("Color Frame", frame)
+    
+    key = cv2.waitKey(1)
+    
+    if key == ord('q'):
+        if motion == 1:
+            time.append(datetime.now())
+        
+        break
+    
+for i in range(0, len(time), 2):
+    df = df.append({"Start":time[i], "End":time[i + 1]}, ignore_index=True)
+    
+df.to_csv("TimeOfMovements.csv")
+video.release()
+cv2.destroyAllWindows()
