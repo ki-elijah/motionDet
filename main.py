@@ -31,7 +31,7 @@ while True:
     motionList.append(motion)
     motionList = motionList[-2:]
     
-    if motionList[-1] = 1 and motionList[-2] == 0:
+    if motionList[-1] == 1 and motionList[-2] == 0:
         time.append(datetime.now())
     
     if motionList[-1] == 0 and motionList[-2] == 1:
