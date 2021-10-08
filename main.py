@@ -19,7 +19,8 @@ while True:
     diffFrame = cv2.absdiff(staticBack, gray)
     threshFrame = cv2.threshold(diffFrame, 30, 255, cv2.THRESH_BINARY)[1]
     threshFrame = cv2.dilate(threshFrame, None, iterations=2)
-    cnts,_ = cv2.findContours(threshFrame, cv2.RETL_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+    cnts, _ = cv2.findContours(
+        threshFrame.copy(), cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
     
     for contour in cnts:
         if cv2.contourArea(contour) < 10000:
