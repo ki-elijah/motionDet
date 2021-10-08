@@ -5,7 +5,7 @@ staticBack = None
 motionList = [None, None]
 time = []
 df = pandas.DataFrame(columns = ["Start", "End"])
-video = cv2.VideoCapture(8)
+video = cv2.VideoCapture(0)
 
 while True:
     check, frame = video.read()
